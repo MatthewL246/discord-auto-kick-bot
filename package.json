@@ -1,0 +1,22 @@
+{
+  "name": "discord-auto-kick-bot",
+  "version": "1.0.0",
+  "description": "This is a Discord bot that automatically kicks all new users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthewL246/discord-auto-kick-bot.git"
+  },
+  "author": "MatthewL246",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MatthewL246/discord-auto-kick-bot/issues"
+  },
+  "homepage": "https://github.com/MatthewL246/discord-auto-kick-bot#readme",
+  "dependencies": {
+    "discord.js": "^13.7.0"
+  }
+}
