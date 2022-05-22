@@ -7,6 +7,7 @@ const client = new Client({
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MEMBERS,
         Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_BANS,
     ],
 });
 
@@ -15,9 +16,13 @@ client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
 
-// Whenever a member joins the server, kick them
+// Whenever a member joins the server, kick or ban them
 client.on("guildMemberAdd", (member) => {
-    member.kick(`Automatic kick of ${member.user.tag}`);
+    if (config.ban) {
+        member.ban({reason: `Automatic ban of ${member.user.tag}`});
+    } else {
+        member.kick(`Automatic kick of ${member.user.tag}`);
+    }
 });
 
 // Login to Discord with the bot's token
