@@ -1,5 +1,5 @@
 const { Client, Intents } = require("discord.js");
-const { token } = require("./config.json");
+const config = require("./config.json");
 
 // Create the bot client instance
 const client = new Client({
@@ -21,4 +21,4 @@ client.on("guildMemberAdd", (member) => {
 });
 
 // Login to Discord with the bot's token
-client.login(token);
+client.login(config.token);
