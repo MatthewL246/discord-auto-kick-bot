@@ -16,8 +16,15 @@ client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
 
+// Ping command
+client.on("messageCreate", message => {
+    if (message.content === "ping") {
+        message.channel.send(`Ping: latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${client.ws.ping}ms`);
+    }
+});
+
 // Whenever a member joins the server, kick or ban them
-client.on("guildMemberAdd", (member) => {
+client.on("guildMemberAdd", member => {
     if (config.ban) {
         member.ban({reason: `Automatic ban of ${member.user.tag}`});
     } else {
