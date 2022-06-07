@@ -13,7 +13,7 @@ const client = new Client({
 
 // Once the bot client is ready, log a message
 client.once("ready", () => {
-    console.log(`Logged in as ${client.user.tag}`);
+    console.log(`Logged in as ${client.user.tag} (${client.user.id})`);
 });
 
 // Ping command
