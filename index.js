@@ -17,20 +17,24 @@ client.once("ready", () => {
 });
 
 // Ping command
-client.on("messageCreate", message => {
+client.on("messageCreate", (message) => {
     if (message.content === config.prefix + "ping") {
-        message.channel.send(`Ping: latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${client.ws.ping}ms.`);
+        message.channel.send(
+            `Ping: latency is ${
+                Date.now() - message.createdTimestamp
+            }ms. API Latency is ${client.ws.ping}ms.`
+        );
     }
 });
 
 // Whenever a member joins the server, kick or ban them
-client.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", (member) => {
     if (config.ban) {
         if (member.bannable) {
             member.ban({
                 reason: `Automatic ban of ${member.user.tag} (${member.user.id})`,
             });
-    } else {
+        } else {
             console.log(
                 `Failed to ban member: ${member.user.tag} (${member.user.id})`
             );
