@@ -26,9 +26,25 @@ client.on("messageCreate", message => {
 // Whenever a member joins the server, kick or ban them
 client.on("guildMemberAdd", member => {
     if (config.ban) {
-        member.ban({reason: `Automatic ban of ${member.user.tag}`});
+        if (member.bannable) {
+            member.ban({
+                reason: `Automatic ban of ${member.user.tag} (${member.user.id})`,
+            });
     } else {
-        member.kick(`Automatic kick of ${member.user.tag}`);
+            console.log(
+                `Failed to ban member: ${member.user.tag} (${member.user.id})`
+            );
+        }
+    } else {
+        if (member.kickable) {
+            member.kick(
+                `Automatic kick of ${member.user.tag} (${member.user.id})`
+            );
+        } else {
+            console.log(
+                `Failed to kick member: ${member.user.tag} (${member.user.id})`
+            );
+        }
     }
 });
 
